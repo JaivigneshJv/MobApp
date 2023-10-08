@@ -21,9 +21,24 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  resume: {
-    data: Buffer,
-    contentType: String,
+  Xpercentage: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  XIIpercentage: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  cgpa: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
+  branch: {
+    type: String,
+    required: false,
   },
   verificationToken: String,
 });

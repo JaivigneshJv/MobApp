@@ -17,7 +17,7 @@ import axios from "axios";
 import { HOST_LINK } from "@env";
 
 const RegisterScreen = () => {
-  console.log(HOST_LINK);
+  // console.log(HOST_LINK);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rollno, setRollNo] = useState("");

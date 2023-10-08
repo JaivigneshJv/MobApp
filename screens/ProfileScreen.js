@@ -22,7 +22,6 @@ const Tab = createMaterialTopTabNavigator();
 
 const ProfileScreen = () => {
   console.log(HOST_LINK);
-
   const [userData, setUserData] = useState({});
   const navigation = useNavigation();
   const [fontsLoaded] = useFonts({
@@ -46,7 +45,7 @@ const ProfileScreen = () => {
           token: token,
         };
         axios.post(url, tokensend).then((res) => {
-          console.log(res);
+          console.log(res.data);
           const email = res.data.email;
           const username = res.data.name;
           const rollno = res.data.regno;
@@ -60,9 +59,11 @@ const ProfileScreen = () => {
     };
     FetchData();
   }, []);
+
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <SafeAreaView
       style={{

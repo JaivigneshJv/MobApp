@@ -151,6 +151,9 @@ app.post("/Main", async (req, res) => {
       email: User.email,
       name: user.name,
       regno: user.regno,
+      Xpercentage: user.Xpercentage,
+      XIIpercentage: user.XIIpercentage,
+      cgpa: user.cgpa,
     });
   } catch (err) {
     console.log("error during login", err);
@@ -173,4 +176,24 @@ app.get("/jobfetch", async (req, res) => {
   res.send(jobs);
 });
 
-app.post("/getresume", async (req, res) => {});
+app.post("/updateUser", async (req, res) => {
+  try {
+    const { name, xscore, xiiscore, cgpa } = req.body;
+    const user = await User.findOneAndUpdate(
+      { name: name },
+      {
+        Xpercentage: xscore,
+        XIIpercentage: xiiscore,
+        cgpa: cgpa,
+      },
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "User updated successfully", user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});

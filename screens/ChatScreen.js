@@ -54,9 +54,18 @@ const ChatScreen = () => {
         screenOptions={{
           tabBarLabelStyle: { fontSize: 12, fontFamily: "Poppins-Black" },
         }}
-        style={{ backgroundColor: "grey" }}
+        style={{
+          backgroundColor: "grey",
+          flex: 1,
+        }}
       >
-        <Tab.Screen name="Alerts" component={Alerts} />
+        <Tab.Screen
+          name="Alerts"
+          component={Alerts}
+          style={{
+            flex: 1,
+          }}
+        />
         <Tab.Screen name="Messages" component={Messages} />
       </Tab.Navigator>
     </SafeAreaView>

@@ -11,11 +11,11 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+
 import { HOST_LINK } from "@env";
 
-
 const ResumeScreen = () => {
-    console.log(HOST_LINK);
+  // console.log(HOST_LINK);
 
   const [jobsData, setJobsData] = useState([]);
   const [fontsLoaded] = useFonts({
@@ -29,7 +29,7 @@ const ResumeScreen = () => {
   if (!fontsLoaded) {
     return null;
   }
-  const url = HOST_LINK+ "/jobfetch";
+  const url = HOST_LINK + "/jobfetch";
   axios.get(url).then((res) => {
     setJobsData(res.data);
   });
