@@ -15,6 +15,10 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { HOST_LINK } from "@env";
+import {
+  GestureHandlerRootView,
+  ScrollView,
+} from "react-native-gesture-handler";
 
 const RegisterScreen = () => {
   // console.log(HOST_LINK);
@@ -88,170 +92,175 @@ const RegisterScreen = () => {
       });
   };
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        backgroundColor: "white",
-      }}
-    >
-      <View
-        style={{
-          paddingHorizontal: 25,
-        }}
-      >
-        <View
+    <GestureHandlerRootView>
+      <ScrollView>
+        <SafeAreaView
           style={{
-            alignItems: "center",
+            flex: 1,
+
+            justifyContent: "center",
+            backgroundColor: "white",
           }}
         >
-          <LoginSVG width={300} height={300} />
-        </View>
-        <KeyboardAvoidingView>
-          <View>
-            <Text
+          <View
+            style={{
+              paddingHorizontal: 25,
+            }}
+          >
+            <View
               style={{
-                fontSize: 28,
-                marginTop: 10,
-                fontWeight: "500",
-                color: "black",
-                marginBottom: 30,
+                alignItems: "center",
               }}
             >
-              Register
-            </Text>
+              <LoginSVG width={300} height={300} />
+            </View>
+            <KeyboardAvoidingView>
+              <View>
+                <Text
+                  style={{
+                    fontSize: 28,
+                    marginTop: 10,
+                    fontWeight: "500",
+                    color: "black",
+                    marginBottom: 30,
+                  }}
+                >
+                  Register
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  borderBottomColor: "#ccc",
+                  borderBottomWidth: 1,
+                  paddingBottom: 8,
+                  marginBottom: 25,
+                }}
+              >
+                <MaterialIcons
+                  name="alternate-email"
+                  size={20}
+                  color="black"
+                  style={{ marginRight: 5, marginTop: 4 }}
+                />
+                <TextInput
+                  value={email}
+                  onChangeText={(e) => setEmail(e)}
+                  placeholder="Email"
+                  style={{
+                    flex: 1,
+                    paddingVertical: 0,
+                  }}
+                  keyboardType="email-address"
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  borderBottomColor: "#ccc",
+                  borderBottomWidth: 1,
+                  paddingBottom: 8,
+                  marginBottom: 25,
+                }}
+              >
+                <MaterialIcons
+                  name="person"
+                  size={20}
+                  color="black"
+                  style={{ marginRight: 5, marginTop: 4 }}
+                />
+                <TextInput
+                  value={username}
+                  onChangeText={(e) => setUsername(e)}
+                  placeholder="UserName"
+                  style={{
+                    flex: 1,
+                    paddingVertical: 0,
+                  }}
+                  keyboardType="email-address"
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  borderBottomColor: "#ccc",
+                  borderBottomWidth: 1,
+                  paddingBottom: 8,
+                  marginBottom: 25,
+                }}
+              >
+                <Ionicons
+                  name="ios-lock-closed-outline"
+                  size={20}
+                  color="black"
+                  style={{ marginRight: 5 }}
+                />
+                <TextInput
+                  value={password}
+                  onChangeText={(e) => setPassword(e)}
+                  placeholder="Password"
+                  style={{
+                    flex: 1,
+                    paddingVertical: 0,
+                  }}
+                  secureTextEntry={true}
+                />
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  borderBottomColor: "#ccc",
+                  borderBottomWidth: 1,
+                  paddingBottom: 8,
+                  marginBottom: 25,
+                }}
+              >
+                <MaterialIcons
+                  name="confirmation-number"
+                  size={20}
+                  color="black"
+                  style={{ marginRight: 5, marginTop: 4 }}
+                />
+                <TextInput
+                  value={rollno}
+                  onChangeText={(e) => setRollNo(e)}
+                  placeholder="Registration Number"
+                  style={{
+                    flex: 1,
+                    paddingVertical: 0,
+                  }}
+                  keyboardType="email-address"
+                />
+              </View>
+              <TouchableOpacity
+                onPress={handleRegister}
+                style={{
+                  backgroundColor: "rgb(119	223	250)",
+                  padding: 15,
+                  borderRadius: 10,
+                  marginBottom: 20,
+                  fontWeight: "500",
+                }}
+              >
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontWeight: "700",
+                    fontSize: 16,
+                    color: "white",
+                  }}
+                >
+                  Register
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text>Already have an account? Login</Text>
+              </TouchableOpacity>
+            </KeyboardAvoidingView>
           </View>
-          <View
-            style={{
-              flexDirection: "row",
-              borderBottomColor: "#ccc",
-              borderBottomWidth: 1,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}
-          >
-            <MaterialIcons
-              name="alternate-email"
-              size={20}
-              color="black"
-              style={{ marginRight: 5, marginTop: 4 }}
-            />
-            <TextInput
-              value={email}
-              onChangeText={(e) => setEmail(e)}
-              placeholder="Email"
-              style={{
-                flex: 1,
-                paddingVertical: 0,
-              }}
-              keyboardType="email-address"
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              borderBottomColor: "#ccc",
-              borderBottomWidth: 1,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}
-          >
-            <MaterialIcons
-              name="person"
-              size={20}
-              color="black"
-              style={{ marginRight: 5, marginTop: 4 }}
-            />
-            <TextInput
-              value={username}
-              onChangeText={(e) => setUsername(e)}
-              placeholder="UserName"
-              style={{
-                flex: 1,
-                paddingVertical: 0,
-              }}
-              keyboardType="email-address"
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              borderBottomColor: "#ccc",
-              borderBottomWidth: 1,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}
-          >
-            <Ionicons
-              name="ios-lock-closed-outline"
-              size={20}
-              color="black"
-              style={{ marginRight: 5 }}
-            />
-            <TextInput
-              value={password}
-              onChangeText={(e) => setPassword(e)}
-              placeholder="Password"
-              style={{
-                flex: 1,
-                paddingVertical: 0,
-              }}
-              secureTextEntry={true}
-            />
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              borderBottomColor: "#ccc",
-              borderBottomWidth: 1,
-              paddingBottom: 8,
-              marginBottom: 25,
-            }}
-          >
-            <MaterialIcons
-              name="confirmation-number"
-              size={20}
-              color="black"
-              style={{ marginRight: 5, marginTop: 4 }}
-            />
-            <TextInput
-              value={rollno}
-              onChangeText={(e) => setRollNo(e)}
-              placeholder="Registration Number"
-              style={{
-                flex: 1,
-                paddingVertical: 0,
-              }}
-              keyboardType="email-address"
-            />
-          </View>
-          <TouchableOpacity
-            onPress={handleRegister}
-            style={{
-              backgroundColor: "rgb(119	223	250)",
-              padding: 15,
-              borderRadius: 10,
-              marginBottom: 20,
-              fontWeight: "500",
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                fontWeight: "700",
-                fontSize: 16,
-                color: "white",
-              }}
-            >
-              Register
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text>Already have an account? Login</Text>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </View>
-    </SafeAreaView>
+        </SafeAreaView>
+      </ScrollView>
+    </GestureHandlerRootView>
   );
 };
 

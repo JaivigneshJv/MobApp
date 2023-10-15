@@ -12,12 +12,13 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFonts } from "expo-font";
 import * as DocumentPicker from "expo-document-picker";
-import { HOST_LINK } from "@env";
+import { HOST_LINK, HOST_LINK_DS } from "@env";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import * as Progress from "react-native-progress";
 
 const JobsScreen = () => {
+  const urll = HOST_LINK_DS;
   // console.log(HOST_LINK);
   const url = HOST_LINK + "/Main";
   const [userData, setUserData] = useState({});
@@ -54,7 +55,8 @@ const JobsScreen = () => {
       model_name: "model",
     };
     try {
-      axios.post("http://192.168.0.101:8005/rate_resume", data).then((res) => {
+      const requesturl1 = HOST_LINK_DS + "/rate_resume";
+      axios.post(requesturl1, data).then((res) => {
         console.log(res.data);
         setResume(res.data);
       });
@@ -64,11 +66,10 @@ const JobsScreen = () => {
   };
   const putData = async (formdataa) => {
     try {
-      const response = await axios.post(
-        "http://192.168.0.101:8005/upload_resume",
-        formdataa,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
+      const requesturl = HOST_LINK_DS + "/upload_resume";
+      const response = await axios.post(requesturl, formdataa, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
 
       if (response.status === 200) {
         const data = response.data;

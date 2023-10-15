@@ -32,6 +32,7 @@ mongoose
 
 const User = require("./models/user");
 const job = require("./models/jobs");
+const feed = require("./models/feed");
 
 const sendVerificationEmail = async (email, verificationToken) => {
   const transporter = nodemailer.createTransport({
@@ -169,6 +170,7 @@ app.post("/jobs", async (req, res) => {
     JobName,
   });
   jobs.save();
+  res.sendStatus(200);
 });
 
 app.get("/jobfetch", async (req, res) => {
@@ -196,4 +198,23 @@ app.post("/updateUser", async (req, res) => {
     console.log(err);
     res.status(500).json({ message: "Internal server error" });
   }
+});
+
+app.get("/team", async (req, res) => {
+  req.body;
+});
+
+app.post("/feed", async (req, res) => {
+  const { name, description } = req.body;
+  const feeds = new feed({
+    description,
+    name,
+  });
+  feeds.save();
+  res.sendStatus(200);
+});
+
+app.get("/feedfetch", async (req, res) => {
+  const feeds = await feed.find();
+  res.send(feeds);
 });

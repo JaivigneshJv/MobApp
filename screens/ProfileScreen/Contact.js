@@ -209,6 +209,7 @@ const Contact = () => {
                 fontFamily: "Poppins-Bold",
                 margin: 20,
                 fontSize: 20,
+                marginBottom: 10,
               }}
             >
               Details
@@ -236,7 +237,7 @@ const Contact = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   borderRadius: 10,
-                  marginTop: 10,
+                  marginTop: 20,
                 }}
               >
                 <Text

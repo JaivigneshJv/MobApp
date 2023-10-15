@@ -12,6 +12,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import JobsScreen from "../screens/JobsScreen";
 import ResumeScreen from "../screens/ResumeScreen";
 import ChatScreen from "../screens/ChatScreen";
+import ApplyScreen from "../screens/JobsScreen/ApplyScreen";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -113,6 +114,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Main"
           component={BottomTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ApplyScreen"
+          component={ApplyScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

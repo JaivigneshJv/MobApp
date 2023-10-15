@@ -18,7 +18,7 @@ import axios from "axios";
 import { HOST_LINK } from "@env";
 
 const LoginScreen = () => {
-  // console.log(HOST_LINK);
+  console.log(HOST_LINK);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();

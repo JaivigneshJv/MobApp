@@ -12,11 +12,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 
+
 import { HOST_LINK } from "@env";
 
 const ResumeScreen = () => {
   // console.log(HOST_LINK);
-
+  const navigation = useNavigation();
   const [jobsData, setJobsData] = useState([]);
   const [fontsLoaded] = useFonts({
     "Poppins-Italic": require("../assets/Fonts/Poppins-Italic.ttf"),
@@ -40,10 +41,10 @@ const ResumeScreen = () => {
         key={job._id}
         style={{
           margin: 5,
-          borderRadius: 10,
-          borderColor: "red",
+          borderRadius: 6,
+          borderColor: "black",
           padding: 15,
-          borderBlockColor: "black",
+          borderWidth: 0.4,
         }}
       >
         <Text
@@ -81,19 +82,37 @@ const ResumeScreen = () => {
         >
           {job.description}
         </Text>
-        <TouchableOpacity>
-          <Text
+        <TouchableOpacity
+          onPress={() => {
+            console.log("Apply button pressed " + job.title);
+            navigation.navigate("ApplyScreen", { job: job });
+          }}
+          style={{
+            alignItems: "flex-end",
+            justifyContent: "center",
+          }}
+        >
+          <View
             style={{
-              textAlign: "right",
-              padding: 5,
-              marginLeft: 10,
-              fontSize: 12,
-              fontFamily: "Poppins-Bold",
-              color: "black",
+              borderWidth: 0.3,
+              topMargin: 20,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 5,
+              backgroundColor: "black",
             }}
           >
-            Apply
-          </Text>
+            <Text
+              style={{
+                padding: 5,
+                fontSize: 12,
+                fontFamily: "Poppins-Bold",
+                color: "white",
+              }}
+            >
+              Apply
+            </Text>
+          </View>
         </TouchableOpacity>
       </View>
     );
@@ -141,20 +160,17 @@ const ResumeScreen = () => {
           Jobs
         </Text>
       </View>
+      {/* <View> */}
       <ScrollView
         style={{
           height: 50,
         }}
       >
-        <View
-          style={{
-            borderRadius: 10,
-            borderColor: "black",
-          }}
-        >
-          {jobViews}
+        <View style={{}}>
+          <View style={{}}>{jobViews}</View>
         </View>
       </ScrollView>
+      {/* </View> */}
       {applyJob() ? applyJob() : null}
     </SafeAreaView>
   );
